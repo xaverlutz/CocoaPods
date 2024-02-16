@@ -649,6 +649,7 @@ module Pod
         native_target = pod_target_installation_result.native_target
         native_target.build_configuration_list.build_configurations.each do |build_configuration|
           (build_configuration.build_settings['OTHER_CFLAGS'] ||= '$(inherited)') << ' -Wincomplete-umbrella'
+          build_configuration.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12'
           if pod_target.uses_swift?
             # The Swift version for the target being validated can be overridden by `--swift-version` or the
             # `.swift-version` file so we always use the derived Swift version.
